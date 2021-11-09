@@ -1,0 +1,22 @@
+<h3>商品一覧</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品画像</th>
+      <th>商品名</th>
+      <th>税込価格</th>
+      <th>商品説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |i| %>
+      <tr>
+        <td><%= attachment_image_tag i, :image, :fill, 100, 100, format: 'jpeg'%></td>
+        <td><%= i.name %></td>
+        <td><%= i.price %></td>
+        <td><%= i.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
