@@ -1,0 +1,33 @@
+<h3>マイページ</h3>
+
+  <div>
+    <div>
+      お名前<br>
+      <%= @customer.name %>
+    </div>
+    <div>
+      お名前(カナ)<br>
+      <%= @customer.name_kana %>
+    </div>
+    <div>
+      電話番号<br>
+      <%= @customer.phone_num %>
+    </div>
+    <div>
+      住所<br>
+      <%= @customer.address %>
+    </div>
+    <div>
+      郵便番号<br>
+      <%= @customer.postal_code %>
+    </div>
+    <div>
+      メールアドレス<br>
+      <%= @customer.email %>
+    </div>
+
+  </div>
+
+  <div class="text-align-center"><%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success m-3" %></div>
+  <div><%= link_to '注文履歴を見る', class: "btn btn-primary m-3" %></div>
+  <div><%= link_to '退会する', customer_withdraw_path(@customer), class: "btn btn-danger m-3" %></div>
