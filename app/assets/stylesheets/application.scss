@@ -18,8 +18,22 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.jumbotron{
+  background-image: url(header-image.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.outline{
+  color: #fff;
+  text-shadow: 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000 ;
+}
+
 .wrapper{
-  postion: relative;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 130px;
   border-sizing: border-box;
 }
 

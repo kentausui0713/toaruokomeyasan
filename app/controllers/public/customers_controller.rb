@@ -19,6 +19,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    current_customer.is_delted = true
   end
 
   private

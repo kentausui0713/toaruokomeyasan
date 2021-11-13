@@ -1,0 +1,32 @@
+<h4>買い物かご</h4>
+
+<table class="table">
+  <tr>
+    <th>商品</th>
+    <th>税込価格</th>
+    <th>商品個数</th>
+    <th>小計</th>
+  </tr>
+  <% @carts.each do |cart| %>
+    <tr>
+      <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
+          <%= cart.item.name %></td>
+      <td><%= cart.item.price %></td>
+      <td>
+        <%= form_with model: cart, url: cart_path(cart), method: :patch, local: true do |f| %>
+          <%= f.number_field :quantity, min:1 %>
+          <%= f.submit "変更" %>
+        <% end %>
+      </td>
+      <td><%= cart.item.price * cart.quantity %></td>
+      <td><%= link_to "削除",cart_path(cart.id), method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+    <% @total += cart.item.price * cart.quantity %>
+  <% end %>
+</table>
+
+<% if current_customer.carts.present? %>
+<h2>合計金額</h2>
+¥<%= @total %>
+<% end %>
+

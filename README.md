@@ -26,10 +26,10 @@
 
 ## 設計書
 
-ワイヤーフレーム　https://drive.google.com/file/d/11THyMM5VH-tN14EKxAMNmwDO8XkRA8Nw/view?usp=sharing  
-ER図　https://drive.google.com/file/d/1_oRDAGrQ3st9HEJhzrrExRtj51n4tbzy/view?usp=sharing  
-テーブル定義書　https://docs.google.com/spreadsheets/d/1B9JKmoLBrUKBeKLUV1VZp7lj2iByNLxfJwDlYijGeDY/edit?usp=sharing  
-アプリケーション詳細設計書　https://docs.google.com/spreadsheets/d/1B9tHTJeS7blK2-QvQcJjXUWdBuJWFZBwp7w2U3KeO-o/edit?usp=sharing  
+ワイヤーフレーム　https://drive.google.com/file/d/11THyMM5VH-tN14EKxAMNmwDO8XkRA8Nw/view?usp=sharing
+ER図　https://drive.google.com/file/d/1_oRDAGrQ3st9HEJhzrrExRtj51n4tbzy/view?usp=sharing
+テーブル定義書　https://docs.google.com/spreadsheets/d/1B9JKmoLBrUKBeKLUV1VZp7lj2iByNLxfJwDlYijGeDY/edit?usp=sharing
+アプリケーション詳細設計書　https://docs.google.com/spreadsheets/d/1B9tHTJeS7blK2-QvQcJjXUWdBuJWFZBwp7w2U3KeO-o/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
@@ -45,4 +45,5 @@ https://docs.google.com/spreadsheets/d/1P8cL94GFk-gM6p9XtglTxj_1k8VgmB6KoZcNDIJg
 
 ## 使用素材
 
-商品画像は自分で撮影した写真を使用予定。
+ヘッダー背景画像参照元：
+https://pixabay.com/ja/photos/%e6%97%a5%e6%9c%ac-%e7%a8%b2%e7%a9%82-%e7%a8%b2-%e7%a7%8b-%e5%ae%9f%e3%82%8a-1737309/

@@ -8,8 +8,13 @@ Rails.application.routes.draw do
     root 'homes#top'
     get '/about' => 'homes#about'
     resource :customer, only: [:show, :edit, :update]
-    get '/customer/withdraw' => 'public/customers#withdraw'
+    patch '/customer/withdraw' => 'public/customers#withdraw'
     resources :items, only: [:index, :show]
+    resources :carts,  only: [:index, :create, :update, :destroy] do
+      collection do
+        delete :destroy_all
+      end
+    end
   end
 
 

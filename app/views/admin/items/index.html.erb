@@ -1,4 +1,5 @@
 <h3>商品一覧</h3>
+
 <table class="table">
   <thead>
     <tr>
@@ -6,6 +7,11 @@
       <th>商品名</th>
       <th>税込価格</th>
       <th>商品説明</th>
+      <th>
+        <%= link_to new_admin_item_path do %>
+          <i class="far fa-plus-square fa-2x"></i>
+        <% end %>
+      </th>
     </tr>
   </thead>
   <tbody>

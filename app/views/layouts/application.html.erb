@@ -10,7 +10,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <div class="wrapper">
   <header>
+    <div class="jumbotron">
+      <h2 class="text-center outline">とあるお米屋さん</h2>
+    </div>
     <% if admin_signed_in? %>
       <%= render 'layouts/admin_header' %>
       <% elsif customer_signed_in? %>
@@ -19,10 +23,13 @@
         <%= render 'layouts/public_header'%>
     <% end %>
   </header>
-  <div class="wrapper">
-    <body>
-      <%= yield %>
-    </body>
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
   </div>
-  <footer><%= render 'layouts/footer' %></footer>
 </html>

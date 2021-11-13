@@ -1,7 +1,7 @@
 <div class="container">
 <h4 class="m-4 bg">会員情報編集</h4>
 
-<%= form_with model: @customer, url: customer_path(@customer), method: :patch, local:true do |f| %>
+<%= form_with model: @customer, url: customer_path(current_customer), method: :patch, local:true do |f| %>
 
   <div class="row">
     <div class="col-3"><p class="text-right">お名前：</p></div>
