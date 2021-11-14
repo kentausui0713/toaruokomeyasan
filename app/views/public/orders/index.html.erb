@@ -1,0 +1,17 @@
+
+<h4>注文履歴</h4>
+
+<table class="table">
+  <tr>
+    <th>日付</th>
+    <th>請求額</th>
+    <th>詳細</th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.created_at %></td>
+    <td><%= order.total_price %></td>
+    <td><%= link_to "詳細", order_path(order.id) %></td>
+  </tr>
+  <% end %>
+</table>

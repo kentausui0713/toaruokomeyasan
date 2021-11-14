@@ -1,0 +1,51 @@
+<h4 class="m-4">注文確認画面</h4>
+
+<table class="table table-bordered m-5">
+  <tr>
+    <th>商品</th>
+    <th>税込価格</th>
+    <th>商品個数</th>
+    <th>小計</th>
+  </tr>
+  <% @carts.each do |cart| %>
+    <tr>
+      <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
+          <%= cart.item.name %></td>
+      <td><%= cart.item.price %></td>
+      <td><%= cart.quantity %></td>
+      <td><%= cart.item.price * cart.quantity %></td>
+    </tr>
+    <% @total += cart.item.price * cart.quantity %>
+  <% end %>
+</table>
+
+<table class="table table-bordered w-50 mx-auto">
+  <tr>
+    <th>お名前</th>
+    <td><%= current_customer.name %>　(<%= current_customer.name_kana %>)</td>
+  </tr>
+  <tr>
+    <th>お届け先</th>
+    <td><%= current_customer.address %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= current_customer.phone_num %></td>
+  </tr>
+  <tr>
+    <th>請求額</th>
+    <td><%= @total %>円</td>
+  </tr>
+
+</table>
+
+<div class="text-center">
+  <%= form_with model: @order, url: orders_path, local:true do |f| %>
+    <%= f.hidden_field :total_price, value: @total %>
+    <%= f.submit "注文する", class: "btn btn-success m-3 text-center" %>
+  <% end %>
+</div>
+
+<div class="text-center">
+  <%= link_to "商品一覧へ戻る", items_path, class: "btn btn-primary m-3 text-center" %>
+</div>

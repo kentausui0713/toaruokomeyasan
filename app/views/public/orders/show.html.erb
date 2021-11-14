@@ -1,0 +1,28 @@
+
+<h4 class="m-4">注文詳細</h4>
+<div class="col-8 mx-auto">
+<table class="table table-bordered">
+  <tr>
+    <th>商品</th>
+    <th>税込価格</th>
+    <th>商品個数</th>
+    <th>小計</th>
+  </tr>
+  <% @order_items.each do |item| %>
+    <tr>
+      <td><%= attachment_image_tag item, :image, :fill, 100, 100, format: "jpeg" %><br>
+          <%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.price * item.quantity %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<div class="col-5 mx-auto">
+  <table class="table table-bordered">
+    <th>合計額</th>
+    <th><%= @order.total_price %></td>
+  </table>
+</div>

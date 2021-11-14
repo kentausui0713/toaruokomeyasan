@@ -15,6 +15,12 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
+    resources :orders, only: [:index, :show, :create] do
+      collection do
+        get :confirm
+        get :complete
+      end
+    end
   end
 
 

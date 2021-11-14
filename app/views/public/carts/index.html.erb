@@ -28,5 +28,7 @@
 <% if current_customer.carts.present? %>
 <h2>合計金額</h2>
 ¥<%= @total %>
+<%= link_to "注文確認画面へ", confirm_orders_path, class: "btn btn-success" %>
+<%= link_to "買い物へ戻る", items_path, class: "btn btn-primary" %>
 <% end %>
 
