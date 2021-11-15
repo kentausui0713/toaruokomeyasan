@@ -1,7 +1,18 @@
 <h4>商品情報</h4>
 
 <div>
- <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+ <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %><br>
+ <!--いいね機能-->
+ <% if @item.favorited_by?(current_customer) %>
+  <%= link_to item_favorites_path(@item.id), method: :delete do %>
+    <i class="fas fa-heart", style="color: red;"></i>
+  <% end %>
+ <% else %>
+  <%= link_to item_favorites_path(@item.id), method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+ <% end %>
+
  <%= @item.name %>
  <%= @item.price %>
  <%= @item.description %>

@@ -1,9 +1,16 @@
 <h4>商品一覧</h4>
 
-<% @items.each do |item| %>
+<% @items.each do |item_i| %>
  <div>
-   <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg' %>
-   <%= link_to item.name, item_path(item.id) %>
-   <%= item.price %>
+   <%= attachment_image_tag item_i, :image, :fill, 100, 100, format: 'jpeg' %>
+   <!--いいね機能-->
+   <% if item_i.favorited_by?(current_customer) %>
+     <%= link_to item_favorites_path(item_i.id), method: :delete do %>
+       <i class="fas fa-heart", style="color: red;"></i>
+     <% end %>
+   <% end %>
+
+   <%= link_to item_i.name, item_path(item_i.id) %>
+   <%= item_i.price %>
  </div>
 <% end %>

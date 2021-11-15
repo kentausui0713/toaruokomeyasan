@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :destroy]
   end
 
-  scope module: 'public' do
+  scope module: :public do
     root 'homes#top'
     get '/about' => 'homes#about'
     resource :customer, only: [:show, :edit, :update]
     patch '/customer/withdraw' => 'public/customers#withdraw'
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :carts,  only: [:index, :create, :update, :destroy] do
       collection do
         delete :destroy_all

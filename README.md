@@ -2,9 +2,12 @@
 
 ## サイト概要
 
-とあるお米屋さんのホームページ兼 EC サイト。
-実家がお米屋をしているため、将来に役立ちそうなサイトを作ってみたいと思い、仮想のお店として「とあるお米屋さん」をテーマに選びました。
+とあるお米屋さんという仮想のお店のホームページ兼 EC サイトです。
+
+実家がお米屋をしているため、将来に役立ちそうなサイトを作ってみたいと思いこのテーマにしました。
+
 一般ユーザーのお客さん側では、商品一覧、営業日、お知らせの確認や商品を注文するといった基本的なことができ、
+
 管理者側では商品の追加、営業日カレンダーの編集、お知らせの編集などができるようになっています。
 
 ### サイトテーマ
@@ -26,12 +29,23 @@
 
 ## 設計書
 
-ワイヤーフレーム　https://drive.google.com/file/d/11THyMM5VH-tN14EKxAMNmwDO8XkRA8Nw/view?usp=sharing
-ER図　https://drive.google.com/file/d/1_oRDAGrQ3st9HEJhzrrExRtj51n4tbzy/view?usp=sharing
-テーブル定義書　https://docs.google.com/spreadsheets/d/1B9JKmoLBrUKBeKLUV1VZp7lj2iByNLxfJwDlYijGeDY/edit?usp=sharing
-アプリケーション詳細設計書　https://docs.google.com/spreadsheets/d/1B9tHTJeS7blK2-QvQcJjXUWdBuJWFZBwp7w2U3KeO-o/edit?usp=sharing
+ワイヤーフレーム：
 
-## チャレンジ要素一覧
+https://drive.google.com/file/d/11THyMM5VH-tN14EKxAMNmwDO8XkRA8Nw/view?usp=sharing
+
+ER図：
+
+https://drive.google.com/file/d/1_oRDAGrQ3st9HEJhzrrExRtj51n4tbzy/view?usp=sharing
+
+テーブル定義書：
+
+https://docs.google.com/spreadsheets/d/1B9JKmoLBrUKBeKLUV1VZp7lj2iByNLxfJwDlYijGeDY/edit?usp=sharing
+
+アプリケーション詳細設計書：
+
+https://docs.google.com/spreadsheets/d/1B9tHTJeS7blK2-QvQcJjXUWdBuJWFZBwp7w2U3KeO-o/edit?usp=sharing
+
+## チャレンジ要素一覧：
 
 https://docs.google.com/spreadsheets/d/1P8cL94GFk-gM6p9XtglTxj_1k8VgmB6KoZcNDIJgoO4/edit?usp=sharing
 
@@ -45,5 +59,13 @@ https://docs.google.com/spreadsheets/d/1P8cL94GFk-gM6p9XtglTxj_1k8VgmB6KoZcNDIJg
 
 ## 使用素材
 
+- 画像
+
 ヘッダー背景画像参照元：
+
 https://pixabay.com/ja/photos/%e6%97%a5%e6%9c%ac-%e7%a8%b2%e7%a9%82-%e7%a8%b2-%e7%a7%8b-%e5%ae%9f%e3%82%8a-1737309/
+
+
+注文完了後画像参照元：
+
+https://unsplash.com/photos/f9my1cgdwu4
