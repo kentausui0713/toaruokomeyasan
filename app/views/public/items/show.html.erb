@@ -21,7 +21,6 @@
 <!--カート情報を入れた状態でカートコントローラのcreateアクションに飛ばす。表示されるのはボタンのみ-->
 <div>
  <%= form_with model: @cart_new, url: carts_path, local:true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id %>
   <%= f.hidden_field :quantity, value: 1 %>
   <%= f.submit "カートに入れる", class: "btn btn-success m-3" %>
  <% end %>

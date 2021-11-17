@@ -4,11 +4,13 @@
  <div>
    <%= attachment_image_tag item_i, :image, :fill, 100, 100, format: 'jpeg' %>
    <!--いいね機能-->
-   <% if item_i.favorited_by?(current_customer) %>
+   <% if customer_signed_in? %>
+    <% if item_i.favorited_by?(current_customer) %>
      <%= link_to item_favorites_path(item_i.id), method: :delete do %>
        <i class="fas fa-heart", style="color: red;"></i>
      <% end %>
-   <% end %>
+    <% end %>
+  <% end %>
 
    <%= link_to item_i.name, item_path(item_i.id) %>
    <%= item_i.price %>

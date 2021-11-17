@@ -1,0 +1,16 @@
+
+  <h4>お知らせ詳細</h4>
+
+    <h6>タイトル：</h6>
+    <%= @information.title %>
+    <h6>追加日時：</h6>
+    <%= @information.created_at %>
+    <h6>内容：<h6>
+    <%= @information.content %>
+    <div>
+      <%= link_to "お知らせ一覧に戻る", admin_informations_path, class: "btn btn-primary" %>
+      <%= link_to "削除する", admin_information_path(@information.id), method: :delete, class: "btn btn-danger" %>
+    </div>
+
+
+

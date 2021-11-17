@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    root 'sessions#new'
     resources :items, only: [:index, :new, :create, :destroy]
+    resources :informations, only: [:index, :create, :show, :destroy]
   end
 
   scope module: :public do
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
         get :complete
       end
     end
+    resources :informations, only: [:index, :show]
   end
 
 
