@@ -7,7 +7,6 @@ class Public::CartsController < ApplicationController
 
   def create
     cart = Cart.new(cart_params)
-    cart.customer_id = current_customer.id
     cart.save
     redirect_to carts_path
   end
@@ -32,7 +31,7 @@ class Public::CartsController < ApplicationController
 
   private
   def cart_params
-    params.require(:cart).permit(:quantity, :item_id)
+    params.require(:cart).permit(:quantity, :item_id, :customer_id)
   end
 
 end

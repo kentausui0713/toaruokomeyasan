@@ -18,12 +18,8 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def withdraw
-    current_customer.is_delted = true
-  end
-
   private
     def customer_params
-      params.require(:customer).permit(:name, :name_kana, :phone_num, :address, :postal_code, :email)
+      params.require(:customer).permit(:name, :name_kana, :phone_num, :address, :postal_code, :email, :is_deleted)
     end
 end

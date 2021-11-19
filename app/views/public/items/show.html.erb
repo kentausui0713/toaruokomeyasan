@@ -2,14 +2,16 @@
 
 <div>
  <%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %><br>
- <!--いいね機能-->
- <% if @item.favorited_by?(current_customer) %>
-  <%= link_to item_favorites_path(@item.id), method: :delete do %>
-    <i class="fas fa-heart", style="color: red;"></i>
-  <% end %>
- <% else %>
-  <%= link_to item_favorites_path(@item.id), method: :post do %>
-    <i class="far fa-heart"></i>
+ <!--いいね機能(ログインしてる時のみ表示)-->
+ <% if customer_signed_in? %>
+  <% if @item.favorited_by?(current_customer) %>
+   <%= link_to item_favorites_path(@item.id), method: :delete do %>
+     <i class="fas fa-heart", style="color: red;"></i>
+   <% end %>
+  <% else %>
+   <%= link_to item_favorites_path(@item.id), method: :post do %>
+     <i class="far fa-heart"></i>
+   <% end %>
   <% end %>
  <% end %>
 
@@ -18,12 +20,37 @@
  <%= @item.description %>
 </div>
 
-<!--カート情報を入れた状態でカートコントローラのcreateアクションに飛ばす。表示されるのはボタンのみ-->
-<div>
- <%= form_with model: @cart_new, url: carts_path, local:true do |f| %>
-  <%= f.hidden_field :quantity, value: 1 %>
-  <%= f.submit "カートに入れる", class: "btn btn-success m-3" %>
- <% end %>
-</div>
+<!--以下、ログインしていない時は表示されない-->
+
+<!--カート情報を入れた状態でカートコントローラのcreateアクションに飛ばすボタン。（個数は1個）-->
+<% if customer_signed_in? %>
+ <div>
+  <%= form_with model: @cart_new, url: carts_path, local:true do |f| %>
+   <%= f.hidden_field :customer_id, value: current_customer.id %>
+   <%= f.hidden_field :item_id, value: @item.id %>
+   <%= f.hidden_field :quantity, value: 1 %>
+   <%= f.submit "カートに入れる", class: "btn btn-success m-3" %>
+  <% end %>
+ </div>
+<!--コメント機能フォーム(rate入り) -->
+ <div>
+  <%= form_with(model:[@item, @comment], url: item_comments_path(@item), local:true) do |f| %>
+   <h5>コメントフォーム</h5>
+   <div id="rating-form">
+    <%= f.hidden_field :rate, :value => 'score' %>
+   </div>
+   <%= f.text_area :comment, lows: "5" %>
+   <%= f.submit "投稿", class: "btn btn-secondary" %>
+  <% end %>
+  <script>
+    $('#rating-form').raty({
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'comment[rate]'
+    });
+  </script>
+ </div>
+
+<% end %>
 
 
