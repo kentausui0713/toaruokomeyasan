@@ -8,20 +8,26 @@
    <a href = "/items/<%= item_i.id %>">
     <%= attachment_image_tag item_i, :image, :fill, 200, 200, format: 'jpeg', class: "card-img-top img-fluid" %>
    </a>
-     <div class="card-body">
-      <p class="card-title font-weight-bold">
-       <!--いいね機能-->
-       <% if customer_signed_in? %>
-        <% if item_i.favorited_by?(current_customer) %>
-         <%= link_to item_favorites_path(item_i.id), method: :delete do %>
-          <i class="fas fa-heart", style="color: red;"></i>
-         <% end %>
+     <p class="card-title font-weight-bold">
+      <!--いいね機能-->
+      <% if customer_signed_in? %>
+       <% if item_i.favorited_by?(current_customer) %>
+        <%= link_to item_favorites_path(item_i.id), method: :delete do %>
+         <i class="fas fa-heart", style="color: red;"></i>
         <% end %>
        <% end %>
+      <% end %>
+      <%= item_i.name %>
+     </p>
 
-       <%= item_i.name %>
-      </p>
-     </div>
+      <!--評価の平均-->
+      <% if item_i.comments.present?%>
+       <div class="average-review-rating" data-score=<%=item_i.comments.pluck(:rate).sum.fdiv(item_i.comments.pluck(:rate).length).to_f.round(1) %>></div>
+      <% else %>
+       <!--同じ高さを取るためのもの-->
+       <div>　</div>
+      <% end %>
+
      <ul class="list-group list-group-flush">
       <li class="list-group-item"><%= item_i.description.truncate(12) %></li>
       <li class="list-group-item"><%= item_i.price %>円</li>
@@ -33,4 +39,16 @@
 
 
 </div>
+<script>
+$('.average-review-rating').raty({
+   readOnly: true,
+   starOn: "<%= asset_path('star-on.png') %>",
+   starOff: "<%= asset_path('star-off.png') %>",
+   starHalf: "<%= asset_path('star-half.png') %>",
+   number:5,
+   score: function() {
+     return $(this).attr('data-score')
+   }
+ });
+</script>
 
