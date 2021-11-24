@@ -1,3 +1,22 @@
-<%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
-<%= link_to '商品一覧', admin_items_path %>
-<%= link_to 'お知らせ追加', admin_informations_path %>
+<nav class="navbar navbar-expand-sm navbar-light bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="text-decoration: none; cursor:default;">メニュー</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to '商品一覧', admin_items_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to 'お知らせ追加', admin_informations_path, class: "nav-link" %></li>
+      </ul>
+      <ul class="navbar-nav" id="navbarContent">
+        <li class="nav-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+

@@ -12,9 +12,20 @@
 
   <div class="wrapper">
   <header>
-    <div class="jumbotron">
-      <h2 class="text-center outline">とあるお米屋さん</h2>
-    </div>
+    <%= render 'layouts/flash' %>
+    <!--管理者ログイン以外ではtopページへ遷移する-->
+    <% if admin_signed_in? %>
+      <div class="jumbotron mb-0">
+        <h2 class="text-center outline">とあるお米屋さん</h2>
+      </div>
+    <% else %>
+      <%= link_to root_path do %>
+        <div class="jumbotron my-0">
+          <h2 class="text-center outline">とあるお米屋さん</h2>
+        </div>
+      <% end %>
+    <% end %>
+
     <% if admin_signed_in? %>
       <%= render 'layouts/admin_header' %>
       <% elsif customer_signed_in? %>
@@ -25,7 +36,14 @@
   </header>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-1 hidden-xs"></div>
+        <div class="col-11">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 
   <footer>

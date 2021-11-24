@@ -1,40 +1,40 @@
 <div class="container">
-<h4 class="m-4 bg">会員情報編集</h4>
+<h3 class="m-3"><span class="heading">会員情報編集</span></h3>
 
 <%= form_with model: @customer, url: customer_path(current_customer), method: :patch, local:true do |f| %>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">お名前：</div>
-    <div class="col-9"><%= f.text_field :name, size: 30, autofocus: true %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">お名前</div>
+    <div class="col-md-9"><%= f.text_field :name, size: 30, autofocus: true, class: "form-control" %></div>
   </div>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">お名前(カナ)：</p></div>
-    <div class="col-9"><%= f.text_field :name_kana, size: 30 %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">お名前(カナ)</div>
+    <div class="col-md-9"><%= f.text_field :name_kana, size: 30, class: "form-control" %></div>
   </div>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">電話番号：</p></div>
-    <div class="col-9"><%= f.text_field :phone_num, size: 30 %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">電話番号</div>
+    <div class="col-md-9"><%= f.text_field :phone_num, size: 30, class: "form-control" %></div>
   </div>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">住所：</p></div>
-    <div class="col-9"><%= f.text_field :address, size: 50 %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">住所</div>
+    <div class="col-md-9"><%= f.text_field :address, size: 50, class: "form-control" %></div>
   </div>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">住所：</p></div>
-    <div class="col-9"><%= f.text_field :postal_code, size: 30 %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">郵便番号</div>
+    <div class="col-md-9"><%= f.text_field :postal_code, size: 30, class: "form-control"%></div>
   </div>
 
-  <div class="row">
-    <div class="col-3"><p class="text-right">メールアドレス：</p></div>
-    <div class="col-9"><%= f.text_field :email, size: 50 %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">メールアドレス</div>
+    <div class="col-md-9"><%= f.text_field :email, size: 50, class: "form-control" %></div>
   </div>
 
-  <div class="row">
-    <div class="mx-auto"><%= f.button '更新する', class: "btn btn-success btn-lg" %></div>
+  <div class="row mb-3">
+    <div class="col-md-4"><%= f.button '更新する', class: "btn btn-success w-100" %></div>
   </div>
 <% end %>
 </div>

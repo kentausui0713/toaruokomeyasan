@@ -1,10 +1,24 @@
+  <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #ddd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="text-decoration: none; cursor:default;">メニュー</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><%= link_to 'Top', root_path , class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'About', about_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '商品一覧', items_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'お知らせ', informations_path, class: "nav-link" %></li>
+        </ul>
+        <ul class="navbar-nav" id="navbarContent">
+          <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path, class: "nav-link" %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <%= link_to 'トップページ', root_path %>
-  <%= link_to 'アバウトページ', about_path %>
-  <%= link_to '商品一覧', items_path %>
-  <%= link_to 'お知らせ', informations_path %>
-  <%= link_to 'ログイン', new_customer_session_path %>
-  <%= link_to '新規登録', new_customer_registration_path %>
 
 
 

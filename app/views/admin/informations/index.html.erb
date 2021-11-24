@@ -5,14 +5,14 @@
     <h6>お知らせ内容</h6>
     <%= f.text_area :content %><br>
 
-    <%= f.submit "お知らせ追加する", class: "btn btn-success" %>
+    <%= f.submit "お知らせ追加する", class: "btn btn-success m-4" %>
   <% end %>
 
   <table class="table">
     <% @informations.each do |i| %>
       <tr>
         <th><%= i.title %></th>
-        <th><%= i.created_at %></th>
+        <th><%= i.created_at.strftime("%Y年%m月%d日 %H:%M") %></th>
         <td><%= link_to "詳細", admin_information_path(i.id), class: "btn btn-primary" %></td>
         <td><%= link_to "削除", admin_information_path(i.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>

@@ -28,10 +28,9 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
    def customer_state
-     @customer = Customer.find_by(email: params[:customer][:email])
-     return if !@customer
-     if @customer.is_deleted == true
-       redirect_to root_path
+     customer = Customer.find_by(email: params[:customer][:email])
+     if customer.is_deleted == true
+       redirect_to new_customer_registration_path, alert: '退会済みのユーザーです。お問い合わせまたは、会員登録をお願いいたします。'
      end
    end
 end

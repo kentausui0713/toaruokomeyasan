@@ -18,6 +18,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// ヘッダー写真
 .jumbotron{
   background-image: image-url("header-image.jpg");
   background-size: cover;
@@ -25,6 +26,7 @@
   background-position: center;
 }
 
+// ヘッダー「とあるお米屋さん」の縁取りデザイン
 .outline{
   color: #fff;
   text-shadow: 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000 ;
@@ -47,4 +49,12 @@ footer{
 position: absolute;
   bottom: 0;
 
+}
+
+.heading{
+  background-color: #efe;
+}
+
+.table-responsive th,td{
+  white-space: nowrap;
 }

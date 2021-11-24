@@ -1,34 +1,48 @@
-<h4>買い物かご</h4>
+<h3 class="m-3"><span class="heading">買い物かご</span></h3>
 
-<table class="table">
-  <tr>
-    <th>商品</th>
-    <th>税込価格</th>
-    <th>商品個数</th>
-    <th>小計</th>
-  </tr>
-  <% @carts.each do |cart| %>
+<div class="table-responsive">
+  <table class="table">
     <tr>
-      <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
-          <%= cart.item.name %></td>
-      <td><%= cart.item.price %></td>
-      <td>
-        <%= form_with model: cart, url: cart_path(cart), method: :patch, local: true do |f| %>
-          <%= f.number_field :quantity, min:1 %>
-          <%= f.submit "変更" %>
-        <% end %>
-      </td>
-      <td><%= cart.item.price * cart.quantity %></td>
-      <td><%= link_to "削除",cart_path(cart.id), method: :delete, class: "btn btn-danger" %></td>
+      <th>商品</th>
+      <th>税込価格</th>
+      <th>商品個数</th>
+      <th>小計</th>
     </tr>
-    <% @total += cart.item.price * cart.quantity %>
-  <% end %>
-</table>
+    <% @carts.each do |cart| %>
+      <tr>
+        <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
+            <%= cart.item.name %></td>
+        <td><%= cart.item.price %></td>
+        <td>
+          <%= form_with model: cart, url: cart_path(cart), method: :patch, local: true do |f| %>
+            <%= f.number_field :quantity, min:1 %>
+            <%= f.submit "変更" %>
+          <% end %>
+        </td>
+        <td><%= cart.item.price * cart.quantity %></td>
+        <td><%= link_to "削除",cart_path(cart.id), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+      <% @total += cart.item.price * cart.quantity %>
+    <% end %>
+  </table>
+</div>
+
 
 <% if current_customer.carts.present? %>
-<h2>合計金額</h2>
-¥<%= @total %>
-<%= link_to "注文確認画面へ", confirm_orders_path, class: "btn btn-success" %>
-<%= link_to "買い物へ戻る", items_path, class: "btn btn-primary" %>
+  <div class="container-fluid">
+    <!--合計金額テーブル-->
+    <div class="row justify-content-center">
+      <div class="col-4 border text-center p-3"><span class="font-weight-bold">合計</span></div>
+      <div class="col-5 border-top border-right border-bottom text-center p-3"><span class="font-weight-bold"><%= @total %>円</span></div>
+    </div>
+
+    <!--以下ボタン-->
+    <div class="row justify-content-center my-3">
+      <div class="col-md-4"><%= link_to "注文確認画面へ", confirm_orders_path, class: "btn btn-success w-100" %></div>
+    </div>
+    <div class="row justify-content-center my-3">
+      <div class="col-md-4"><%= link_to "買い物へ戻る", items_path, class: "btn btn-primary w-100" %></div>
+    </div>
+  </div>
 <% end %>
 

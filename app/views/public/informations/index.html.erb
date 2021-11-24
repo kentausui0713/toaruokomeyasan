@@ -1,11 +1,17 @@
-<h4>お知らせ</h4>
- <table class="table">
+<h3 class="m-3"><span class="header">お知らせ</span></h3>
+<div class="table-responsive">
+  <table class="table">
     <% @informations.each do |i| %>
       <tr>
-        <th><%= i.title %></th>
-        <td><%= i.content.truncate(15) %></td>
-        <td><%= i.created_at %></td>
-        <td><%= link_to "詳細", information_path(i.id), class: "btn btn-success" %></td>
+        <th>
+          <%= link_to information_path(i.id) do %>
+            <%= i.title %>
+          <% end %>
+        </th>
+        <td><%= i.content.truncate(20) %></td>
+        <td><%= i.created_at.strftime("%Y年%m月%d日") %></td>
       </tr>
     <% end %>
   </table>
+</div>
+

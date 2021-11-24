@@ -2,7 +2,7 @@ class Admin::InformationsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @informations = Information.all
+    @informations = Information.all.order(id: "DESC")
     @information_new = Information.new
   end
 

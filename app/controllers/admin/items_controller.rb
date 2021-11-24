@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.all.order(id: "DESC")
   end
 
   def destroy

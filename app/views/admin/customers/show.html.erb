@@ -1,0 +1,31 @@
+<h3>会員情報</h3>
+
+  <div>
+    <div>
+      お名前<br>
+      <%= @customer.name %>
+    </div>
+    <div>
+      お名前(カナ)<br>
+      <%= @customer.name_kana %>
+    </div>
+    <div>
+      電話番号<br>
+      <%= @customer.phone_num %>
+    </div>
+    <div>
+      住所<br>
+      <%= @customer.address %>
+    </div>
+    <div>
+      郵便番号<br>
+      <%= @customer.postal_code %>
+    </div>
+    <div>
+      メールアドレス<br>
+      <%= @customer.email %>
+    </div>
+
+  </div>
+
+  <div><%= link_to '注文履歴を見る', orders_path(customer_id: @customer.id), class: "btn btn-primary m-3" %></div>

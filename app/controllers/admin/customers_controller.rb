@@ -3,7 +3,6 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.all
-    byebug
   end
 
   def show
@@ -11,14 +10,14 @@ class Admin::CustomersController < ApplicationController
   end
 
   def withdraw
-    customer = Customer.find_by(params[:id])
+    customer = Customer.find_by(email: params[:email])
     if customer.is_deleted == false
-      customer.is_deleted = true
+      customer.update(is_deleted: true)
+      redirect_to admin_customers_path, alert: '会員ステータスを退会にしました'
     else
-      customer.is_deleted = false
+      customer.update(is_deleted: false)
+      redirect_to admin_customers_path, notice: '会員ステータスを復活させました'
     end
-    customer.update
-    redirect_to admin_customers_path
   end
 
 end

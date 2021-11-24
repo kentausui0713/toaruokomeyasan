@@ -1,33 +1,53 @@
-<h3>マイページ</h3>
+<div class="container">
+  <h3 class="m-3"><span class="heading">マイページ</span></h3>
 
-  <div>
-    <div>
-      お名前<br>
-      <%= @customer.name %>
-    </div>
-    <div>
-      お名前(カナ)<br>
-      <%= @customer.name_kana %>
-    </div>
-    <div>
-      電話番号<br>
-      <%= @customer.phone_num %>
-    </div>
-    <div>
-      住所<br>
-      <%= @customer.address %>
-    </div>
-    <div>
-      郵便番号<br>
-      <%= @customer.postal_code %>
-    </div>
-    <div>
-      メールアドレス<br>
-      <%= @customer.email %>
-    </div>
-
+  <div class="row mb-3">
+    <div class="col-md-3">お名前</div>
+    <div class="col-md-9"><%= @customer.name %></div>
   </div>
 
-  <div class="text-align-center"><%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-success m-3" %></div>
-  <div><%= link_to '注文履歴を見る', orders_path, class: "btn btn-primary m-3" %></div>
-  <div><%= link_to '退会する', withdraw_customer_path(@customer), class: "btn btn-danger m-3" %></div>
+  <div class="row mb-3">
+    <div class="col-md-3">お名前(カナ)</div>
+    <div class="col-md-9"><%= @customer.name_kana %></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">電話番号</div>
+    <div class="col-md-9"><%= @customer.phone_num %></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">住所</div>
+    <div class="col-md-9"><%= @customer.address %></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">郵便番号</div>
+    <div class="col-md-9"><%= @customer.postal_code %></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-3">メールアドレス</div>
+    <div class="col-md-9"><%= @customer.email %></div>
+  </div>
+
+  <!--以下ボタン-->
+  <div class="row justify-content-center">
+    <div class="col-md-4"><%= link_to '編集する', edit_customer_path, class: "btn btn-success m-3 w-100" %></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4"><%= link_to '注文履歴を見る', orders_path(customer_id: current_customer.id), class: "btn btn-primary m-3 w-100" %></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4"><%= link_to '退会する', withdraw_customer_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-danger m-3 w-100" %></div>
+  </div>
+
+</div>
+
+
+
+
+
+

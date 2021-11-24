@@ -1,44 +1,43 @@
-<div class="conteiner">
- <h4>商品一覧</h4>
+<div class="conteiner-fluid">
+ <h3 class="m-3"><span class="heading">商品一覧</span></h3>
 
-<div class="row">
- <% @items.each do |item_i| %>
- <div class="col-xl-2 col-sm-3">
-  <div class="card text-center h-100 mb-3">
-   <a href = "/items/<%= item_i.id %>">
-    <%= attachment_image_tag item_i, :image, :fill, 200, 200, format: 'jpeg', class: "card-img-top img-fluid" %>
-   </a>
-     <p class="card-title font-weight-bold">
-      <!--いいね機能-->
-      <% if customer_signed_in? %>
-       <% if item_i.favorited_by?(current_customer) %>
-        <%= link_to item_favorites_path(item_i.id), method: :delete do %>
-         <i class="fas fa-heart", style="color: red;"></i>
+ <div class="row">
+  <% @items.each do |item_i| %>
+  <div class="col-md-3 mb-4">
+   <div class="card text-center h-100 mb-3" style="min-width: 170px;">
+    <a href = "/items/<%= item_i.id %>">
+     <%= attachment_image_tag item_i, :image, :fill, 200, 200, format: 'jpeg', class: "card-img-top img-fluid" %>
+    </a>
+      <p class="card-title font-weight-bold">
+       <!--いいね機能-->
+       <% if customer_signed_in? %>
+        <% if item_i.favorited_by?(current_customer) %>
+         <%= link_to item_favorites_path(item_i.id), method: :delete do %>
+          <i class="fas fa-heart", style="color: red;"></i>
+         <% end %>
         <% end %>
        <% end %>
-      <% end %>
-      <%= item_i.name %>
-     </p>
+       <%= item_i.name %>
+      </p>
 
-      <!--評価の平均-->
-      <% if item_i.comments.present?%>
-       <div class="average-review-rating" data-score=<%=item_i.comments.pluck(:rate).sum.fdiv(item_i.comments.pluck(:rate).length).to_f.round(1) %>></div>
-      <% else %>
-       <!--同じ高さを取るためのもの-->
-       <div>　</div>
-      <% end %>
+       <!--評価の平均-->
+       <% if item_i.comments.present?%>
+        <div class="average-review-rating" data-score=<%=item_i.comments.pluck(:rate).sum.fdiv(item_i.comments.pluck(:rate).length).to_f.round(1) %>></div>
+       <% else %>
+        <!--同じ高さを取るためのもの-->
+        <div>　</div>
+       <% end %>
 
-     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><%= item_i.description.truncate(12) %></li>
-      <li class="list-group-item"><%= item_i.price %>円</li>
-     </ul>
+      <ul class="list-group list-group-flush">
+       <li class="list-group-item"><%= item_i.description.truncate(12) %></li>
+       <li class="list-group-item"><%= item_i.price %>円</li>
+      </ul>
+   </div>
+  </div>
+  <% end %>
  </div>
 </div>
-<% end %>
-</div>
 
-
-</div>
 <script>
 $('.average-review-rating').raty({
    readOnly: true,
