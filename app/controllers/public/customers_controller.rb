@@ -10,9 +10,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find_by(email: current_customer.email)
-    if customer.update(customer_params)
-      redirect_to customer_path(customer)
+    @customer = Customer.find_by(email: current_customer.email)
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer)
     else
       render :edit
     end

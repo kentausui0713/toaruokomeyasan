@@ -1,4 +1,4 @@
-<h3 class="m-3"><span class="header">お知らせ</span></h3>
+<h3 class="m-4"><span class="heading">お知らせ</span></h3>
 <div class="table-responsive">
   <table class="table">
     <% @informations.each do |i| %>
@@ -8,10 +8,12 @@
             <%= i.title %>
           <% end %>
         </th>
-        <td><%= i.content.truncate(20) %></td>
+        <td><%= i.content.truncate(15) %></td>
         <td><%= i.created_at.strftime("%Y年%m月%d日") %></td>
       </tr>
     <% end %>
   </table>
 </div>
-
+<div class="row">
+  <div class="mx-auto"><%= paginate @informations, theme: 'twitter-bootstrap-4'%></div>
+</div>

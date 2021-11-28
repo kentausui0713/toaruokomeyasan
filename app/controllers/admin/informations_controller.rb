@@ -1,15 +1,19 @@
 class Admin::InformationsController < ApplicationController
-  before_action :authenticate_admin!
+before_action :authenticate_admin!
 
   def index
-    @informations = Information.all.order(id: "DESC")
-    @information_new = Information.new
+    @informations = Information.all.order(id: "DESC").page(params[:page]).per(10)
+    @information = Information.new
   end
 
   def create
-    @info = Information.new(information_params)
-    @info.save
-    redirect_to admin_information_path(@info.id)
+    @information = Information.new(information_params)
+    if @information.save
+      redirect_to admin_information_path(@information.id)
+    else
+      @informations = Information.all.order(id: "DESC")
+      render :index
+    end
   end
 
   def show

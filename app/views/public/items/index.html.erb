@@ -1,5 +1,5 @@
 <div class="conteiner-fluid">
- <h3 class="m-3"><span class="heading">商品一覧</span></h3>
+ <h3 class="m-4"><span class="heading">商品一覧</span></h3>
 
  <div class="row">
   <% @items.each do |item_i| %>
@@ -35,6 +35,9 @@
    </div>
   </div>
   <% end %>
+ </div>
+ <div class="row">
+  <div class='mx-auto'><%= paginate @items, theme: 'twitter-bootstrap-4' %></div>
  </div>
 </div>
 

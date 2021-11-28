@@ -3,18 +3,26 @@ class Public::CartsController < ApplicationController
   def index
     @carts = Cart.where(customer_id: current_customer.id)
     @total = 0
+    # エラー文の変数指定(cartのデータならなんでもいい)
+    @cart = Cart.where(customer_id: current_customer.id).last
   end
 
   def create
     cart = Cart.new(cart_params)
-    cart.save
-    redirect_to carts_path
+    if cart.save
+      redirect_to carts_path
+    end
   end
 
   def update
-    cart = Cart.find(params[:id])
-    cart.update(cart_params)
-    redirect_to carts_path
+    @cart = Cart.find(params[:id])
+    if @cart.update(cart_params)
+      redirect_to carts_path
+    else
+      @carts = Cart.where(customer_id: current_customer.id)
+      @total = 0
+      render :index
+    end
   end
 
   def destroy

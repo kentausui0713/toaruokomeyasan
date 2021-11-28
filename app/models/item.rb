@@ -8,4 +8,6 @@ class Item < ApplicationRecord
       favorites.where(customer_id: customer.id).exists?
   end
 
+  validates :name, :price, :image, :description, presence: true
+  validates :price, numericality: {only_integer: true, message: "には数字を入れてください"}
 end

@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     # 新しい注文順(order(created_at: :desc))
-    @orders = Order.where(customer_id: params[:customer_id]).order(created_at: :desc)
+    @orders = Order.where(customer_id: params[:customer_id]).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def show

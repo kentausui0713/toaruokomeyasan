@@ -6,12 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to '商品一覧', admin_items_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to 'お知らせ追加', admin_informations_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to '会員一覧', admin_customers_path, class: "nav-link text-white" %></li>
+        <li class="nav-item"><%= link_to '商品一覧', admin_items_path, class: "nav-link text-white" %></li>
+        <li class="nav-item"><%= link_to '注文一覧', index_all_admin_orders_path, class: "nav-link text-white" %></li>
+        <li class="nav-item"><%= link_to 'お知らせ追加', admin_informations_path, class: "nav-link text-white" %></li>
       </ul>
       <ul class="navbar-nav" id="navbarContent">
-        <li class="nav-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-white" %></li>
       </ul>
     </div>
   </div>

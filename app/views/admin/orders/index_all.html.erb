@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h3 class="m-4"><span class="admin_heading text-wrap">注文履歴一覧</span></h3>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>日付</th>
+          <th>注文者</th>
+          <th>請求額</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @order_all.each do |order| %>
+        <tr>
+          <td><%= order.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+          <td><%= order.customer.name %></td>
+          <td><%= order.total_price %>円</td>
+          <td><%= link_to "詳細", admin_order_path(order.id), class: "btn btn-primary" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto"><%= paginate @order_all, theme: 'twitter-bootstrap-4'%></div>
+  </div>
+</div>

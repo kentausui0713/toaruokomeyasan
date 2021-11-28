@@ -1,51 +1,66 @@
-<h4 class="m-4">注文確認画面</h4>
+<div class="container-fluid">
+  <h3 class="m-4"><span class="heading">注文確認画面</span></h3>
+  <div class="table-responsive">
+    <table class="table table-bordered mb-5">
+      <thead>
+        <tr>
+        <th>商品</th>
+        <th>税込価格</th>
+        <th>商品個数</th>
+        <th>小計</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @carts.each do |cart| %>
+        <tr>
+          <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
+              <%= cart.item.name %></td>
+          <td><%= cart.item.price %></td>
+          <td><%= cart.quantity %></td>
+          <td><%= cart.item.price * cart.quantity %></td>
+        </tr>
+        <% @total += cart.item.price * cart.quantity %>
+      <% end %>
+      </tbody>
+    </table>
 
-<table class="table table-bordered m-5">
-  <tr>
-    <th>商品</th>
-    <th>税込価格</th>
-    <th>商品個数</th>
-    <th>小計</th>
-  </tr>
-  <% @carts.each do |cart| %>
-    <tr>
-      <td><%= attachment_image_tag cart.item, :image, :fill, 100, 100, format: "jpeg" %><br>
-          <%= cart.item.name %></td>
-      <td><%= cart.item.price %></td>
-      <td><%= cart.quantity %></td>
-      <td><%= cart.item.price * cart.quantity %></td>
-    </tr>
-    <% @total += cart.item.price * cart.quantity %>
-  <% end %>
-</table>
+    <table class="table table-bordered w-50 mx-auto">
+      <tr>
+        <th>お名前</th>
+        <td><%= current_customer.name %>　(<%= current_customer.name_kana %>)</td>
+      </tr>
+      <tr>
+        <th>お届け先</th>
+        <td><%= current_customer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= current_customer.phone_num %></td>
+      </tr>
+      <tr>
+        <th>請求額</th>
+        <td><%= @total %>円</td>
+      </tr>
+    </table>
 
-<table class="table table-bordered w-50 mx-auto">
-  <tr>
-    <th>お名前</th>
-    <td><%= current_customer.name %>　(<%= current_customer.name_kana %>)</td>
-  </tr>
-  <tr>
-    <th>お届け先</th>
-    <td><%= current_customer.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= current_customer.phone_num %></td>
-  </tr>
-  <tr>
-    <th>請求額</th>
-    <td><%= @total %>円</td>
-  </tr>
+  </div>
 
-</table>
 
-<div class="text-center">
   <%= form_with model: @order, url: orders_path, local:true do |f| %>
     <%= f.hidden_field :total_price, value: @total %>
-    <%= f.submit "注文する", class: "btn btn-success m-3 text-center" %>
+    <div class="row justify-content-center my-3">
+      <div class="col-md-4"><%= f.submit "注文する", class: "btn btn-success w-100" %></div>
+    </div>
   <% end %>
-</div>
 
-<div class="text-center">
-  <%= link_to "商品一覧へ戻る", items_path, class: "btn btn-primary m-3 text-center" %>
+
+
+  <%= form_with model: @order, url: orders_path, local:true do |f| %>
+    <%= f.hidden_field :total_price, value: @total %>
+    <div class="row justify-content-center">
+      <div class="col-md-4"><%= link_to "商品一覧へ戻る", items_path, class: "btn btn-primary w-100" %></div>
+    </div>
+  <% end %>
+
+
 </div>

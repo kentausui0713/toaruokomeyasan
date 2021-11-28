@@ -1,4 +1,7 @@
-<h3 class="m-3"><span class="heading">買い物かご</span></h3>
+<h3 class="m-4"><span class="heading">買い物かご</span></h3>
+<% if current_customer.carts.exists? %>
+  <%= render 'layouts/error_messages', model: @cart %>
+<% end %>
 
 <div class="table-responsive">
   <table class="table">

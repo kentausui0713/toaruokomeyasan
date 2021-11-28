@@ -1,20 +1,33 @@
-<h4>お知らせ追加</h4>
-  <%= form_with model: @information_new, url: admin_informations_path, local:true do |f| %>
-    <h6>タイトル</h6>
+<div class="container-fluid">
+  <h3 class="m-4"><span class="admin_heading">お知らせ追加</span></h3>
+  <%= render 'layouts/error_messages', model: @information %>
+  <%= form_with model: @information, url: admin_informations_path, local:true do |f| %>
+    <h6 class="font-weight-bold">タイトル</h6>
     <%= f.text_field :title, autofocus: true %>
-    <h6>お知らせ内容</h6>
-    <%= f.text_area :content %><br>
-
-    <%= f.submit "お知らせ追加する", class: "btn btn-success m-4" %>
+    <h6 class="mt-3 font-weight-bold">お知らせ内容</h6>
+    <div class="row">
+      <div class="col-md-10">
+        <%= f.text_area :content, class: "w-100" %>
+      </div>
+    </div>
+    <div class="row justify-content-center m-4">
+      <div class="col-md-4"><%= f.submit "お知らせ追加する", class: "btn btn-success w-100" %></div>
+    </div>
   <% end %>
 
-  <table class="table">
-    <% @informations.each do |i| %>
-      <tr>
-        <th><%= i.title %></th>
-        <th><%= i.created_at.strftime("%Y年%m月%d日 %H:%M") %></th>
-        <td><%= link_to "詳細", admin_information_path(i.id), class: "btn btn-primary" %></td>
-        <td><%= link_to "削除", admin_information_path(i.id), method: :delete, class: "btn btn-danger" %></td>
-      </tr>
-    <% end %>
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <% @informations.each do |i| %>
+        <tr>
+          <th><%= i.title %></th>
+          <th><%= i.created_at.strftime("%Y年%m月%d日 %H:%M") %></th>
+          <td><%= link_to "詳細", admin_information_path(i.id), class: "btn btn-primary" %></td>
+          <td><%= link_to "削除", admin_information_path(i.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto"><%= paginate @informations, theme: 'twitter-bootstrap-4'%></div>
+   </div>
+</div>

@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        name: 名前
+        name_kana: 名前(カナ)
+        phone_num: 電話番号
+        address: 住所
+        postal_code: 郵便番号
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        remember_me: 次回から自動でログイン
+      admin:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+      cart:
+        quantity: 商品個数
+      item:
+        name: 商品名
+        image: 商品画像
+        price: 税込価格
+        description: 商品説明
+      information:
+        title: タイトル
+        content: お知らせ内容

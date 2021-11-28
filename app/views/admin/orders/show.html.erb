@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <h3 class="m-4"><span class="admin_heading">注文詳細</span></h3>
+  <div class="table-responsive">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>商品</th>
+              <th>税込価格</th>
+              <th>商品個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_items.each do |item| %>
+              <tr>
+                <td><%= attachment_image_tag item, :image, :fill, 100, 100, format: "jpeg", class: "img-fluid" %><br>
+                    <%= item.name %></td>
+                <td><%= item.price %></td>
+                <td><%= item.quantity %></td>
+                <td><%= item.price * item.quantity %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-5 mx-auto">
+      <table class="table table-bordered">
+        <tr class="text-center">
+          <th>合計額</th>
+          <th><%= @order.total_price %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+</div>
+

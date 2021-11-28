@@ -1,16 +1,30 @@
-
-  <h4>お知らせ詳細</h4>
-
-    <h6>タイトル：</h6>
-    <%= @information.title %>
-    <h6>追加日時：</h6>
-    <%= @information.created_at %>
-    <h6>内容：<h6>
-    <%= @information.content %>
-    <div>
-      <%= link_to "お知らせ一覧に戻る", admin_informations_path, class: "btn btn-primary" %>
-      <%= link_to "削除する", admin_information_path(@information.id), method: :delete, class: "btn btn-danger" %>
+<div class="container-fluid">
+  <h3 class="m-4"><span class="admin_heading">お知らせ詳細</span></h3>
+  <div class="row mb-3">
+    <div class="col-md-3">タイトル:</div>
+    <div class="col-md-9">
+      <%= @information.title %>
     </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-3">追加日時:</div>
+    <div class="col-md-9"><%= @information.created_at.strftime("%Y年%m月%d日 %H:%M") %></div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-3">お知らせ内容:</div>
+    <div class="col-md-9"><%= @information.content %></div>
+  </div>
 
+  <!--ボタン-->
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <%= link_to "お知らせ一覧に戻る", admin_informations_path, class: "btn btn-primary w-100" %>
+    </div>
+  </div>
 
-
+  <div class="row justify-content-center my-4">
+    <div class="col-md-4">
+      <%= link_to "削除する", admin_information_path(@information), method: :delete, class: "btn btn-danger w-100" %>
+    </div>
+  </div>
+</div>

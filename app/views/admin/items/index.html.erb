@@ -1,29 +1,42 @@
-<h3>商品一覧</h3>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>商品画像</th>
-      <th>商品名</th>
-      <th>税込価格</th>
-      <th>商品説明</th>
-      <th>
-        <%= link_to new_admin_item_path do %>
-          <i class="far fa-plus-square fa-2x"></i>
+<div class="container-fluid">
+  <h3 class="m-4"><span class="admin_heading">商品一覧</span></h3>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品画像</th>
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th>商品説明</th>
+          <th>
+            <%= link_to new_admin_item_path do %>
+              <i class="far fa-plus-square fa-2x"></i>
+            <% end %>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |i| %>
+          <tr>
+            <td><%= attachment_image_tag i, :image, :fill, 100, 100, format: 'jpeg', class: "img-fluid" %></td>
+            <td>
+              <%= link_to admin_item_path(i) do %>
+                <%= i.name %>
+              <% end %>
+            </td>
+            <td><%= i.price %>円</td>
+            <td class="text-wrap"><%= i.description.truncate(15) %></td>
+            <td><%= link_to "削除する", admin_item_path(i.id), class: "btn btn-danger", method: :delete %></td>
+          </tr>
         <% end %>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |i| %>
-      <tr>
-        <td><%= attachment_image_tag i, :image, :fill, 100, 100, format: 'jpeg'%></td>
-        <td><%= i.name %></td>
-        <td><%= i.price %></td>
-        <td><%= i.description %></td>
-        <td><%= link_to "削除する", admin_item_path(i.id), class: "btn btn-danger", method: :delete %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="mx-auto"><%= paginate @items, theme: 'twitter-bootstrap-4'%></div>
+   </div>
+</div>
+
+
+
 

@@ -1,17 +1,19 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'customers/index'
-  end
-  namespace :admin do
     root 'sessions#new'
-    resources :items, only: [:index, :new, :create, :destroy]
-    resources :informations, only: [:index, :create, :show, :destroy]
+    resources :items, only: [:index, :new, :create,:show, :destroy]
     resources :customers, only: [:index, :show] do
       collection do
         patch :withdraw
       end
     end
+    resources :orders, only: [:index, :show] do
+      collection do
+        get :index_all
+      end
+    end
+    resources :informations, only: [:index, :show, :create, :delete]
   end
 
   scope module: :public do

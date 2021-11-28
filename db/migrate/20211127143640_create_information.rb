@@ -2,7 +2,7 @@ class CreateInformation < ActiveRecord::Migration[5.2]
   def change
     create_table :information do |t|
       t.string :title, null: false
-      t.string :content, null: false
+      t.text :content, null: false
 
       t.timestamps
     end

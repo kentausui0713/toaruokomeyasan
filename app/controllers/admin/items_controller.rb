@@ -15,7 +15,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.order(id: "DESC")
+    @items = Item.all.order(id: "DESC").page(params[:page]).per(6)
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def destroy
