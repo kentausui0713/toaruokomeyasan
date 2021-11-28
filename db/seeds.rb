@@ -9,6 +9,6 @@
 Admin.create!(
   name: "taro",
   email: "admin@admin",
-  password: "admin1234"
+  password: "admin1"
   )
 
