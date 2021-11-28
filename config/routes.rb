@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for :admin, skip: [:registrations, :passwords], controllers:{
+    sessions: "admin/sessions"
+  }
+
+  devise_for :customer, skip: [:passwords], controllers:{
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+
   namespace :admin do
     root 'sessions#new'
     resources :items, only: [:index, :new, :create,:show, :destroy]
@@ -45,16 +54,5 @@ Rails.application.routes.draw do
 
     resources :informations, only: [:index, :show]
   end
-
-
-
-  devise_for :admin, skip: [:registrations, :passwords], controllers:{
-  sessions: "admin/sessions"
-  }
-
-  devise_for :customer, skip: [:passwords], controllers:{
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
 
 end
