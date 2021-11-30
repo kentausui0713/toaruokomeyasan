@@ -21,8 +21,8 @@
       </p>
 
        <!--評価の平均-->
-       <% if item_i.comments.present?%>
-        <div class="average-review-rating" data-score=<%=item_i.comments.pluck(:rate).sum.fdiv(item_i.comments.pluck(:rate).length).to_f.round(1) %>></div>
+       <% if item_i.comments.present? %>
+         <div class="average-review-rating" data-score=<%= item_i.comments.pluck(:rate).sum.fdiv(item_i.comments.pluck(:rate).length).to_f.round(1) %>></div>
        <% else %>
         <!--同じ高さを取るためのもの-->
         <div>　</div>
