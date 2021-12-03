@@ -1,7 +1,7 @@
 class Public::CartsController < ApplicationController
   before_action :authenticate_customer!
   def index
-    @carts = Cart.where(customer_id: current_customer.id)
+    @carts = current_customer.carts
     @total = 0
     # エラー文の変数指定(cartのデータならなんでもいい)
     @cart = Cart.where(customer_id: current_customer.id).last
@@ -19,7 +19,7 @@ class Public::CartsController < ApplicationController
     if @cart.update(cart_params)
       redirect_to carts_path
     else
-      @carts = Cart.where(customer_id: current_customer.id)
+      @carts = current_customer.carts
       @total = 0
       render :index
     end
@@ -32,7 +32,7 @@ class Public::CartsController < ApplicationController
   end
 
   def destroy_all
-    cart = Cart.where(customer_id: current_customer.id)
+    cart = current_customer.carts
     cart.destroy_all
     redirect_to carts_path
   end
