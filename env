@@ -1,0 +1,4 @@
+DB_USERNAME="root"
+DB_PASSWORD="usuikenta"
+DB_HOST="rds-mysql-server.czajzimt7idt.ap-northeast-1.rds.amazonaws.com"
+DB_DATABASE="toaruokomeyasan"

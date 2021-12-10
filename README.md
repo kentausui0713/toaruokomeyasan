@@ -67,6 +67,6 @@ https://pixabay.com/ja/photos/%e6%97%a5%e6%9c%ac-%e7%a8%b2%e7%a9%82-%e7%a8%b2-%e
 
 https://unsplash.com/photos/f9my1cgdwu4
 
-商品画像：
+商品画像(お米)：
 
 自分で撮影したもの
