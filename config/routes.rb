@@ -7,10 +7,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'sessions#new'
-    resources :items, only: [:index, :new, :create,:show, :destroy]
+    resources :items, only: [:index, :new, :create,:show, :destroy] do
+      get :search, on: :collection
+    end
     resources :customers, only: [:index, :show] do
       collection do
         patch :withdraw
+        get :search
       end
     end
     resources :orders, only: [:index, :show] do
@@ -33,6 +36,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      get :search, on: :collection
     end
 
     resources :carts,  only: [:index, :create, :update, :destroy] do

@@ -12,6 +12,7 @@
           <li class="nav-item"><%= link_to 'お知らせ', informations_path, class: "nav-link" %></li>
         </ul>
         <ul class="navbar-nav" id="navbarContent">
+          <li class="nav-item"><%= render partial: 'layouts/search', locals: {search_genre: "商品検索" } %></li>
           <li class="nav-item"><%= link_to 'ログイン', new_customer_session_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to '新規登録', new_customer_registration_path, class: "nav-link" %></li>
         </ul>

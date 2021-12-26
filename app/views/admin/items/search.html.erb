@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <h3 class="m-4"><span class="admin_heading">商品一覧</span></h3>
+    <h3 class="m-4"><span class="admin_heading">商品検索 "<%= @keyword %>"</span></h3>
     <div class="ml-sm-auto mb-sm-0"><%= render partial: 'layouts/search', locals: {search_items_path: search_admin_items_path, search_genre: "商品検索" } %></div>
   </div>
   
@@ -40,7 +40,3 @@
     <div class="mx-auto"><%= paginate @items, theme: 'twitter-bootstrap-4'%></div>
    </div>
 </div>
-
-
-
-

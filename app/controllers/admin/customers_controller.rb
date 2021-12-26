@@ -21,5 +21,14 @@ class Admin::CustomersController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+  
+  def search
+    if params[:keyword].present?
+      @keyword = params[:keyword]
+      @customers = Customer.where('name LIKE ?', '%'+@keyword+'%').order(id: "DESC").page(params[:page])
+    else
+      @customers = Customer.none.page(params[:page])
+    end
+  end
 
 end

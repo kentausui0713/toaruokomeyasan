@@ -27,6 +27,15 @@ class Admin::ItemsController < ApplicationController
     item.destroy
     redirect_to admin_items_path
   end
+  
+  def search
+    if params[:keyword].present?
+      @keyword = params[:keyword]
+      @items = Item.where('name LIKE ?', '%'+@keyword+'%').order(id: "DESC").page(params[:page]).per(6)
+    else
+      @items = Item.none.page(params[:page])
+    end
+  end
 
   private
    def item_params

@@ -1,5 +1,9 @@
 <div class="container-fluid">
+  <div class="row">
   <h3 class="m-4"><span class="admin_heading">会員情報一覧</span></h3>
+  <div class="ml-sm-auto mb-sm-0"><%= render partial: 'layouts/search', locals: {search_items_path: search_admin_customers_path, search_genre: "会員検索" } %></div>
+  </div>
+
   <div class="table-responsive">
     <table class="table">
       <thead class="thead-light">

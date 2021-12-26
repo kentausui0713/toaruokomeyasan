@@ -9,4 +9,13 @@ class Public::ItemsController < ApplicationController
     @cart_new = Cart.new
     @comment = Comment.new
   end
+  
+  def search
+    if params[:keyword].present?
+      @word = params[:keyword]
+      @items = Item.where('name LIKE ?', '%'+@word+'%' ).preload(:comments).page(params[:page]).per(8)
+    else
+      @items = Item.none.page(params[:page]).per(8)
+    end
+  end
 end
