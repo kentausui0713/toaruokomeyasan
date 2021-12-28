@@ -4,39 +4,43 @@
     <div class="ml-sm-auto mb-sm-0"><%= render partial: 'layouts/search', locals: {search_items_path: search_admin_items_path, search_genre: "商品検索" } %></div>
   </div>
   
-  <div class="table-responsive">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>商品画像</th>
-          <th>商品名</th>
-          <th>税込価格</th>
-          <th>商品説明</th>
-          <th>
-            <%= link_to new_admin_item_path do %>
-              <i class="far fa-plus-square fa-2x"></i>
-            <% end %>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @items.each do |i| %>
+  <% if @items.blank? %>
+    <p class="text-center">該当する商品が見つかりません</p>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-light">
           <tr>
-            <td><%= attachment_image_tag i, :image, :fill, 100, 100, format: 'jpeg', class: "img-fluid" %></td>
-            <td>
-              <%= link_to admin_item_path(i) do %>
-                <%= i.name %>
+            <th>商品画像</th>
+            <th>商品名</th>
+            <th>税込価格</th>
+            <th>商品説明</th>
+            <th>
+              <%= link_to new_admin_item_path do %>
+                <i class="far fa-plus-square fa-2x"></i>
               <% end %>
-            </td>
-            <td><%= i.price %>円</td>
-            <td class="text-wrap"><%= i.description.truncate(15) %></td>
-            <td><%= link_to "削除する", admin_item_path(i.id), class: "btn btn-danger", method: :delete %></td>
+            </th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="row">
-    <div class="mx-auto"><%= paginate @items, theme: 'twitter-bootstrap-4'%></div>
-   </div>
+        </thead>
+        <tbody>
+          <% @items.each do |i| %>
+            <tr>
+              <td><%= attachment_image_tag i, :image, :fill, 100, 100, format: 'jpeg', class: "img-fluid" %></td>
+              <td>
+                <%= link_to admin_item_path(i) do %>
+                  <%= i.name %>
+                <% end %>
+              </td>
+              <td><%= i.price %>円</td>
+              <td class="text-wrap"><%= i.description.truncate(15) %></td>
+              <td><%= link_to "削除する", admin_item_path(i.id), class: "btn btn-danger", method: :delete %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="mx-auto"><%= paginate @items, theme: 'twitter-bootstrap-4'%></div>
+    </div>
+  <% end %>
 </div>

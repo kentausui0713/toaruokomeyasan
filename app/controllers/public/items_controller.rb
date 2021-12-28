@@ -13,7 +13,8 @@ class Public::ItemsController < ApplicationController
   def search
     if params[:keyword].present?
       @word = params[:keyword]
-      @items = Item.where('name LIKE ?', '%'+@word+'%' ).preload(:comments).page(params[:page]).per(8)
+      @items = Item.where('name LIKE ?', '%'+@word+'%' ).or(Item.where('description LIKE ?', '%'+@word+'%'))
+      @items = @items.preload(:comments).page(params[:page]).per(8)
     else
       @items = Item.none.page(params[:page]).per(8)
     end

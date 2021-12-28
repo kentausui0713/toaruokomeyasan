@@ -31,7 +31,8 @@ class Admin::ItemsController < ApplicationController
   def search
     if params[:keyword].present?
       @keyword = params[:keyword]
-      @items = Item.where('name LIKE ?', '%'+@keyword+'%').order(id: "DESC").page(params[:page]).per(6)
+      @items = Item.where('name LIKE ?', '%'+@keyword+'%').or(Item.where('description LIKE ?', '%'+@keyword+'%'))
+      @items = @items.order(id: "DESC").page(params[:page]).per(6)
     else
       @items = Item.none.page(params[:page])
     end

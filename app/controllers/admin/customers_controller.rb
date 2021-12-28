@@ -25,9 +25,15 @@ class Admin::CustomersController < ApplicationController
   def search
     if params[:keyword].present?
       @keyword = params[:keyword]
-      @customers = Customer.where('name LIKE ?', '%'+@keyword+'%').order(id: "DESC").page(params[:page])
+      # Customerのname、email、phone_numで部分検索(長くなるので変数に)
+      search_name = Customer.where('name LIKE ?','%'+@keyword+'%')
+      search_email = Customer.where('email LIKE ?','%'+@keyword+'%')
+      search_phone = Customer.where('phone_num LIKE ?','%'+@keyword+'%')
+      
+      @customers = search_name.or(search_email).or(search_phone)
+      @customers = @customers.order(id: "DESC").page(params[:page])
     else
-      @customers = Customer.none.page(params[:page])
+      @customers = Customer.none
     end
   end
 
