@@ -1,4 +1,34 @@
 <div class="conteiner-fluid">
+ <!--人気商品ベスト3はmd(992px)以上の画面幅で表示。画面幅992px未満は非表示。-->
+ <div class="d-none d-md-block">
+ <h4 class="m-3 text-center">人気商品ベスト3</h4>
+ <div class="row justify-content-center">
+  <% @items_rank.each.with_index(1) do |item_rank, i| %>
+  <p class="font-weight-bold">第<%= i %>位</p>
+  <div class="col-md-3 mb-4">
+   <div class="card text-center h-100 mb-3" style="min-width: 170px;">
+    <a href="/items/<%= item_rank.id %>">
+     <%= attachment_image_tag item_rank, :image, :fill, 200, 200, format: 'jpeg', class: "card-img-top img-fluid" %>
+    </a>
+    <p class="card-title font-weight-bold"><%= item_rank.name %></p>
+    <!--評価の平均-->
+    <% if item_rank.comments.present? %>
+      <div class="average-review-rating" data-score=<%= item_rank.comments.pluck(:rate).sum.fdiv(item_rank.comments.pluck(:rate).length).to_f.round(1) %>></div>
+    <% else %>
+     <!--同じ高さを取るためのもの-->
+     <div>　</div>
+    <% end %>
+    
+    <ul class="list-group list-group-flush">
+     <li class="list-group-item"><%= item_rank.description.truncate(30) %></li>
+     <li class="list-group-item"><%= item_rank.price %>円</li>
+    </ul>
+   </div>
+  </div>
+  <% end %>
+ </div>
+ </div>
+ 
  <h3 class="m-4"><span class="heading">商品一覧</span></h3>
 
  <div class="row">
@@ -29,7 +59,7 @@
        <% end %>
 
       <ul class="list-group list-group-flush">
-       <li class="list-group-item"><%= item_i.description.truncate(12) %></li>
+       <li class="list-group-item"><%= item_i.description.truncate(30) %></li>
        <li class="list-group-item"><%= item_i.price %>円</li>
       </ul>
    </div>

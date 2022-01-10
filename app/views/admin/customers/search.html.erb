@@ -7,6 +7,6 @@
   <% if @customers.blank? %>
     <p class="text-center">該当する会員がいません</p>
   <% else %>
-    <%= render partial: "customer_index",locals: {customers: @customers} %>
+    <%= render partial: "admin_customer_index",locals: {customers: @customers} %>
   <% end %>
 </div>

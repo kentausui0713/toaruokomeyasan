@@ -15,6 +15,7 @@ class Public::OrdersController < ApplicationController
     carts.each do |cart|
       OrderItem.create(
         order_id: @order.id,
+        item_id: cart.item_id,
         name: cart.item.name,
         image: cart.item.image,
         price: cart.item.price,
