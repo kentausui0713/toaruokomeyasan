@@ -18,5 +18,5 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery.raty.js
+//= require item_rank.js
 //= require_tree .
-

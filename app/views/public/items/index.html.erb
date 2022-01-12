@@ -1,7 +1,7 @@
 <div class="conteiner-fluid">
  <!--人気商品ベスト3はmd(992px)以上の画面幅で表示。画面幅992px未満は非表示。-->
  <div class="d-none d-md-block">
- <h4 class="m-3 text-center"><span class="rank_header">人気商品ベスト3</span></h4>
+ <h4 class="m-3 text-center" style="display: none;"><span class="rank_header">人気商品ベスト3</span></h4>
  <div class="row justify-content-center">
   <% @items_rank.each.with_index(1) do |item_rank, i| %>
   <p class="font-weight-bold">第<%= i %>位</p>
@@ -83,7 +83,7 @@ $('.average-review-rating').raty({
    }
  });
  
- $(h4).fadeIn(1500);
+$(function(){
+ $('h4').fadeIn(2000);
+ });
 </script>
-
-
